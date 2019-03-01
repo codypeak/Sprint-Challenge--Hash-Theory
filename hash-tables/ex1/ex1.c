@@ -2,12 +2,24 @@
 #include <stdlib.h>
 #include "hashtable.h"
 #include "ex1.h"
-
+//find two items whose weight sums to the weight limit.  return answer struct. no pair is null. no key -1.
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   HashTable *ht = create_hash_table(16);
 
-  // YOUR CODE HERE
+  //set variables
+  int weight = weights[i];
+  int weight_difference = limit - weight;
+
+  //initiate hash table
+  Answer *answer = malloc(sizeof(Answer));
+  //set initial values of weights
+  answer->index_1 = weight;
+  answer->index_2 = weight_difference;
+
+
+
+
 
   return NULL;
 }

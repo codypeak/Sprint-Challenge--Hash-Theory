@@ -46,6 +46,9 @@ char **reconstruct_trip(Ticket **tickets, int length)
     }
   }
 
+  //destroy to avoid memory leaks
+  destroy_hash_table(ht);
+
   return route;
 }
 

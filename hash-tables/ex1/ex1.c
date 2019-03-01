@@ -31,6 +31,9 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
     hash_table_insert(ht, weight, index);
   }
 
+  //destroy to avoid memory leaks
+  destroy_hash_table(ht);
+
   return NULL;
 }
 

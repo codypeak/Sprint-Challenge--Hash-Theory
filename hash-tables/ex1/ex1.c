@@ -7,19 +7,29 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   HashTable *ht = create_hash_table(16);
 
-  //set variables
-  int weight = weights[i];
-  int weight_difference = limit - weight;
+  for (int index = 0; index < length; index++)
+  {
+    //set variables
+    int weight = weights[index];
+    int weight_difference = limit - weight;
 
-  //initiate hash table
-  Answer *answer = malloc(sizeof(Answer));
-  //set initial values of weights
-  answer->index_1 = weight;
-  answer->index_2 = weight_difference;
+    //retrieve weight difference index
+    int difference_index = hash_table_retrieve(ht, weight_difference);
 
+    //if the index exists
+    if (difference_index != -1)
+    {
+      //initialize struct
+      Answer *answer = malloc(sizeof(Answer));
+      //set initial values of weights
+      answer->index_1 = index;
+      answer->index_2 = difference_index;
 
-
-
+      return answer;
+    }
+    //insert current index 
+    hash_table_insert(ht, weight, index);
+  }
 
   return NULL;
 }
